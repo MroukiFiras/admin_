@@ -1,0 +1,115 @@
+<div class="container transparent-bg">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Add New Product</h1>
+        <a [routerLink]="['products']" class="d-none d-sm-inline-block btn btn-sm btn-primary custom-shadow "><i
+                class="fas fa-list p-2"></i>List Products</a>
+    </div>
+
+    <div class="card col-lg  p-4 custom-shadow">
+       <form #f="ngForm" (ngSubmit)="AddNewProduct(f)">
+            <div class="form-group">
+                <label for="productname" class="text-dark">Product Name : </label>
+                <input id="productname" name="productName" type="text" class="form-control  shadow-none" required #productName ngModel>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="control-label" class="text-dark">Type : </label>
+                        <select class="form-control shadow-none select2" [(ngModel)]="selectedType" name="selectedType"
+                            (change)="changeCategories()" ngModel>
+                            <option value="">Select Type</option>
+                            <option value="Clothes">Clothes</option>
+                            <option value="Shoes">Shoes</option>
+                            <option value="Accessories">Accessories</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="control-label" class="text-dark">Categories : </label>
+                        <select class="form-control shadow-none select2" [(ngModel)]="selectedCategory"
+                            name="selectedCategory" (change)="changeSizes()" ngModel>
+                            <option value="">Select Categories</option>
+                            <option *ngFor="let category of getCategories()" [value]="category">{{ category }}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="control-label box" class="text-dark">Sizes : </label>
+                        <select class="select2 form-control select2-multiple shadow-none" multiple="multiple"
+                            data-placeholder="Choose ..." [(ngModel)]="selectedSizes" ngModel>
+                            <option *ngFor="let size of selectedCategorySizes" [value]="size">{{ size }}</option>
+                        </select>                          
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="genderSelect" class="text-dark">Gender :</label>
+                        <select class="form-control shadow-none" id="genderSelect" name="selectedGender" ngModel>
+                            <option value="">Select Gender</option>
+                            <option value="Men">Men</option>
+                            <option value="Women">Women</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="productPrice" class="text-dark">Price : </label>
+                        <input id="productPrice" name="productPrice" type="number" value="00.00"
+                            class="form-control shadow-none" step="0.01" ngModel>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="productQuantity" class="text-dark" >Quantity : </label>
+                        <input id="productQuantity" name="productQuantity" type="number" value="0"
+                            class="form-control shadow-none" ngModel>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <label class="form-label">Color</label>
+                    <input placeholder="color placeholder" name="color" type="color" id="color" class="w-100 form-control form-control-color shadow-none" ngModel>
+                </div>
+                <div class="col-lg-6 ">
+                    <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+                        <ngx-dropzone-label>
+                          <div>
+                            <h2>My custom dropzone</h2>
+                          </div>
+                        </ngx-dropzone-label>
+                        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                        </ngx-dropzone-image-preview>
+                      </div>
+                      
+                </div>
+
+            </div>
+
+
+            <div class="form-group mb-0">
+                <label for="productdesc" class="text-dark">Product Description : </label>
+                <textarea class="form-control shadow-none" id="productdesc" rows="4" ngModel></textarea>
+            </div>
+            <div class="form-group mb-0 float-right p-1">
+                <button type="submit" class="btn btn-primary">Add Product</button>
+            </div>
+            
+        </form>
+    </div>
+
+            
+
+
+
+</div>

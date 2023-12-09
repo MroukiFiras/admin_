@@ -1,0 +1,5 @@
+.custom-hover-effect:hover {
+  background-color: rgb(255, 255, 255);
+  color: blue;
+  transition: 1s;
+}

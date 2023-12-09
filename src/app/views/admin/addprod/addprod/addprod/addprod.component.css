@@ -1,0 +1,8 @@
+.custom-shadow {
+    box-shadow: 0 0 5px rgba(75, 108, 207, 0.5); /* Blue shadow with 50% opacity */
+}
+.btn-primary:hover {
+    background-color: rgb(255, 255, 255); 
+    color: blue;
+    transition: 5ms;
+}

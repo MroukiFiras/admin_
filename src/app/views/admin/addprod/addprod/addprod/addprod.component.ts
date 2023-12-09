@@ -10,6 +10,8 @@ export class AddprodComponent {
   selectedType: string = ''; // Variable to hold the selected type
   selectedCategory: string = ''; // Variable to hold the selected category
   selectedSizes: string[] = []; // Array to hold the selected sizes
+  files: File[] = [];
+
   imageUrl: string = '';
   constructor(private DataService: DataService) {}
 
@@ -46,28 +48,37 @@ export class AddprodComponent {
   get selectedCategorySizes(): string[] {
     return this.DataService.getSizesByCategory(this.selectedCategory);
   }
-  files: File[] = [];
 
   onSelect(event: any) {
-    console.log(event);
+    // console.log(event);
     this.files.push(...event.addedFiles);
   }
-  
+
   onRemove(file: File) {
-    console.log(file);
+    // console.log(file);
     const index = this.files.indexOf(file);
     if (index !== -1) {
       this.files.splice(index, 1);
     }
   }
 
-
-
   AddNewProduct(f: any) {
-    let data = f.value;
-    data.files = this.files;
-    console.log(data);
+    const data = f.value;
+    data.files = this.files; // Attach selected files to the data
 
-    this.DataService.postProduct(data).subscribe((data) => console.log(data));
+    this.DataService.postProduct(data).subscribe(
+      (response) => {
+        console.log('Product added successfully:', response);
+        f.resetForm();
+        this.files = [];
+        this.selectedType = '';
+        this.selectedCategory = '';
+        this.selectedSizes = [];
+      },
+      (error) => {
+        console.error('Error adding product:', error);
+      }
+    );
+    console.log(data);
   }
 }

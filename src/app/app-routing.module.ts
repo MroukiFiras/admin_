@@ -7,7 +7,10 @@ import { GuardadminGuard } from './views/guards/guardadmin.guard';
 
 const routes: Routes = [
   { path: '', component: ClientLayoutComponent,children: [
+    {path: '', loadChildren: () => import('./views/client/home/home-routing.module').then((m) => m.HomeRoutingModule)},
     {path: 'login',loadChildren: () =>import('./views/client/loginclient/loginclient.module').then((m) => m.LoginclientModule)},
+    {path: 'home', loadChildren: () => import('./views/client/home/home-routing.module').then((m) => m.HomeRoutingModule)},
+    {path: 'productDetail' , loadChildren: () => import('./views/client/product-detail/product-detail-routing.module').then((m) => m.ProductDetailRoutingModule )}
     ],
   },
   {path: 'admin',component: AdminLayoutComponent,canActivate:[GuardadminGuard],children: [

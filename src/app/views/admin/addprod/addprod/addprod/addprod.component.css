@@ -3,6 +3,6 @@
 }
 .btn-primary:hover {
     background-color: rgb(255, 255, 255); 
-    color: blue;
+    color: black;
     transition: 5ms;
 }

@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label class="control-label box" class="text-dark">Sizes : </label>
                         <select class="select2 form-control select2-multiple shadow-none" multiple="multiple"
-                            data-placeholder="Choose ..." [(ngModel)]="selectedSizes" ngModel>
+                            data-placeholder="Choose ..." [(ngModel)]="selectedSizes" name="selectedSizes" ngModel>
                             <option *ngFor="let size of selectedCategorySizes" [value]="size">{{ size }}</option>
                         </select>                          
                     </div>
@@ -91,15 +91,11 @@
                         <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
                         </ngx-dropzone-image-preview>
                       </div>
-                      
                 </div>
-
             </div>
-
-
             <div class="form-group mb-0">
-                <label for="productdesc" class="text-dark">Product Description : </label>
-                <textarea class="form-control shadow-none" id="productdesc" rows="4" ngModel></textarea>
+                <label for="productdesc" class="text-dark">Product Description:</label>
+                <textarea class="form-control shadow-none" id="productdesc" rows="4" name="productDescription" ngModel></textarea>
             </div>
             <div class="form-group mb-0 float-right p-1">
                 <button type="submit" class="btn btn-primary">Add Product</button>
@@ -109,7 +105,6 @@
     </div>
 
             
-
 
 
 </div>

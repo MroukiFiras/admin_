@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -116,7 +118,12 @@ export class DataService {
     return this.Sizes[category] || [];
   }
 
-  public postProduct(product: any) {
-    return this.http.post(`${environment.urlbackend}` + 'addProduct', product);
+  public postProduct(product: any): Observable<any> {
+    return this.http.post<any>(`${environment.urlbackend}addProduct`, product);
   }
+
+  public getAllProducts(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.urlbackend}products`);
+  }
+  
 }

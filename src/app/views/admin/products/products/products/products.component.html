@@ -1,1 +1,55 @@
-<p>products works!</p>
+<div class="container transparent-bg">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Add Products</h1>
+        <a [routerLink]="['/products']" class="d-none d-sm-inline-block btn btn-sm btn-primary custom-shadow">
+            <i class="fas fa-list p-2"></i>List Products
+        </a>
+    </div>
+
+    <div class="card col-lg p-4 custom-shadow">
+        <h2 class="mb-3">Products List</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of dataProducts; let i = index">
+                        <td>{{ '#FB0' + (i + 1) }}</td>
+                        <td>{{ product.productName }}</td>
+                        <td>{{ product.productType }}</td>
+                        <td>{{ product.productCategory }}</td>
+                        <td>{{ product.productPrice }}</td>
+                        <td>{{ product.productQuantity }}</td>
+                        <td>{{ product.selectedGender }}</td>
+                        <td>{{ product.color }}</td>
+                        <td>{{ product.productDescription }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Description</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

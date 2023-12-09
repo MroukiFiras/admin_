@@ -6,10 +6,11 @@
     </div>
 
     <div class="card col-lg  p-4 custom-shadow">
-       <form #f="ngForm" (ngSubmit)="AddNewProduct(f)">
+        <form #f="ngForm" (ngSubmit)="AddNewProduct(f)">
             <div class="form-group">
                 <label for="productname" class="text-dark">Product Name : </label>
-                <input id="productname" name="productName" type="text" class="form-control  shadow-none" required #productName ngModel>
+                <input id="productname" name="productName" type="text" class="form-control  shadow-none" required
+                    #productName ngModel>
             </div>
             <div class="row">
                 <div class="col-lg-4">
@@ -42,7 +43,7 @@
                         <select class="select2 form-control select2-multiple shadow-none" multiple="multiple"
                             data-placeholder="Choose ..." [(ngModel)]="selectedSizes" name="selectedSizes" ngModel>
                             <option *ngFor="let size of selectedCategorySizes" [value]="size">{{ size }}</option>
-                        </select>                          
+                        </select>
                     </div>
                 </div>
 
@@ -69,7 +70,7 @@
 
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="productQuantity" class="text-dark" >Quantity : </label>
+                        <label for="productQuantity" class="text-dark">Quantity : </label>
                         <input id="productQuantity" name="productQuantity" type="number" value="0"
                             class="form-control shadow-none" ngModel>
                     </div>
@@ -79,32 +80,35 @@
             <div class="row">
                 <div class="col-lg-6">
                     <label class="form-label">Color</label>
-                    <input placeholder="color placeholder" name="color" type="color" id="color" class="w-100 form-control form-control-color shadow-none" ngModel>
+                    <input placeholder="color placeholder" name="color" type="color" id="color"
+                        class="w-100 form-control form-control-color shadow-none" ngModel>
                 </div>
                 <div class="col-lg-6 ">
                     <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
                         <ngx-dropzone-label>
-                          <div>
-                            <h2>My custom dropzone</h2>
-                          </div>
+                            <div>
+                                <h2>My custom dropzone</h2>
+                            </div>
                         </ngx-dropzone-label>
-                        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                        <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files"
+                            [file]="f" [removable]="true" (removed)="onRemove(f)">
                         </ngx-dropzone-image-preview>
-                      </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group mb-0">
                 <label for="productdesc" class="text-dark">Product Description:</label>
-                <textarea class="form-control shadow-none" id="productdesc" rows="4" name="productDescription" ngModel></textarea>
+                <textarea class="form-control shadow-none" id="productdesc" rows="4" name="productDescription"
+                    ngModel></textarea>
             </div>
             <div class="form-group mb-0 float-right p-1">
                 <button type="submit" class="btn btn-primary">Add Product</button>
             </div>
-            
+
         </form>
     </div>
 
-            
+
 
 
 </div>
